@@ -31,6 +31,5 @@ python main.py \
 * Jaewoo Kang+
 * Sang Joon Shin+
 
-*Co-first authors
-+Co-corresponding authors
+*Co-first authors, +Co-corresponding authors
 
