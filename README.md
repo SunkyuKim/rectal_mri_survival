@@ -7,13 +7,13 @@ Most electronic medical records, such as free-text radiological reports, are uns
 ## Demo
 
 ### Prerequisites
-We provide toy data to run our implementation.
-The full TCGA gene expression data can be downloaded in ICGC data portal.
+```
+conda create -f environment.yml -n emrsurvival
+conda activate emrsurvival
+```
 
-https://dcc.icgc.org/
+### Training and evaluating our model
 
-
-### Training and evaluating our deep learning based rectal cancer patient survival prediction model
 ```
 python main.py \
     --device=0 \
