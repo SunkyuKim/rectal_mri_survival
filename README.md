@@ -1,4 +1,4 @@
-## Introduction
+## Abstract
 
 ![model image](fig1.png)
 
@@ -15,16 +15,22 @@ https://dcc.icgc.org/
 
 ### Training and evaluating our deep learning based rectal cancer patient survival prediction model
 ```
-python main.py
+python main.py \
+    --device=0 \
+    --pretrained=vocab/kexin_clinicalbert/pretraining \
+    --result_dir=results/
 ```
 
 ## Authors
-
-* Sunkyu Kim
-* Choong-kun Lee 
+* Sunkyu Kim*
+* Choong-kun Lee* 
 * Yonghwa Choi
 * Eun Sil Baek
 * Jeong Eun Choi
 * Joon Seok Lim
-* Jaewoo Kang
-* Sang Joon Shin
+* Jaewoo Kang+
+* Sang Joon Shin+
+
+*Co-first authors
++Co-corresponding authors
+
