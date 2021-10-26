@@ -381,7 +381,7 @@ class VisitBertCox(BertPreTrainedModel):
         outputs_list = list()
 
         gru_h = None
-        for i in range(len(input_ids_list)):    
+        for i in range(len(input_ids_list)):
             input_ids = input_ids_list[i] # (batch, seqlen)
             demo_vec = demo_list[i]
 
@@ -411,14 +411,14 @@ class VisitBertCox(BertPreTrainedModel):
             if self.only_first_report:
                 break # use only first visit report
 
-        
+
         theta_list = list()
         context = outputs_list[0] + outputs_list[-1]
         context = self.fc(context)
-        context = self.tanh(context) 
+        context = torch.tanh(context)
         theta = self.final(context)
         theta_list.append(theta)
-             
+
         return theta_list, context, context
 
 

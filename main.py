@@ -24,7 +24,7 @@ from tensorboardX  import SummaryWriter
 
 def main(config):
     config.use_bert = True if "bert" in str(config.model).lower() else False
-    
+
     config.result_dir = "{}/{}_{}/".format(config.result_dir, config.model, config.split_seed)
     os.makedirs(config.result_dir, exist_ok=True)
 
@@ -35,7 +35,7 @@ def main(config):
         logger = utils.BKLogger.logger()
 
 
-    emr = utils.EMRParser("./results/overall_survival_data_with_mri_cea_op_rt.json",
+    emr = utils.EMRParser("./sample_data.json",
                             max_length=512,
                             use_cache=True,
                             cv_split=5,
@@ -97,7 +97,7 @@ def main(config):
                                 "test":test_logdict,
                                 "epoch":epoch}
                 pickle.dump(writedict, fw)
-        
+
         if test_logdict["Cindex"] > test_maxCindex:
             test_maxCindex = test_logdict["Cindex"]
             with open("{}/visualdict_testmax.pkl".format(config.result_dir, epoch), "wb") as fw:
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', default=1e-4, type=int)
     parser.add_argument('--l2reg', default=3e-7, type=int)
     parser.add_argument("--processname", type=str, default="EMRsurvival")
-    
+
     parser.add_argument("--split_seed", type=int, default=0)
     parser.add_argument("--torch_seed", type=int, default=0)
 
@@ -187,7 +187,7 @@ if __name__ == "__main__":
     config = parser.parse_args()
 
     setproctitle.setproctitle(config.processname)
-    
+
     import copy
     for i in range(1):
         tmpconfig = copy.deepcopy(config)
